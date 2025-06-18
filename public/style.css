@@ -228,7 +228,7 @@ h1 {
 #call-timer {
   position: absolute;
   top: 10px;
-  left: 20px; /* Adjusted for visibility */
+  left: 20px;
   color: #fff;
   font-size: 16px;
   font-family: 'Poppins', sans-serif;
@@ -275,7 +275,7 @@ h1 {
 }
 
 .hidden {
-  display: none;
+  display: none !important; /* Reinforced to prevent override */
 }
 
 @keyframes fadeIn {
