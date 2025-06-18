@@ -2,50 +2,55 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Rav & Mon's Love Chat</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <title>Rav & Mon's Romantic Chat</title>
   <link rel="stylesheet" href="/style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" href="/favicon.ico">
+  <script src="https://unpkg.com/peerjs@1.4.7/dist/peerjs.min.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
 </head>
 <body>
   <div id="login-screen">
-    <h1>Rav & Mon's Love Chat</h1>
-    <div id="profile-pic-container">
-      <img id="profile-pic" src="/ravmon.jpg" alt="Profile Picture">
-    </div>
-    <input type="text" id="username" placeholder="Enter your name (Rav or Mon)" maxlength="3">
-    <button id="login-btn"><i class="fas fa-heart"></i> Login</button>
+    <h1>Rav & Mon's Romance</h1>
+    <button onclick="login('Rav')">Login as Rav</button>
+    <button onclick="login('Mon')">Login as Mon</button>
   </div>
-
-  <div id="chat-screen" class="hidden">
-    <div id="header">
-      <img id="partner-pic" src="/rav-mon-profile.png" alt="Partner's Profile Picture">
-      <div id="partner-info">
-        <span id="partner-name">Waiting...</span>
-        <span id="partner-status" class="offline">Offline</span>
+  <div id="chat-screen" style="display:none;">
+    <div id="chat-header">
+      <label for="profile-pic-input">
+        <img id="profile-pic" src="/default-pic.png" alt="Your Profile">
+      </label>
+      <input type="file" id="profile-pic-input" accept="image/*">
+      <div>
+        <h2 id="chat-partner"></h2>
+        <div id="partner-status" class="status offline"></div>
+      </div>
+      <div id="call-buttons">
+        <button id="voice-call-btn" title="Voice Call">📞</button>
+        <button id="video-call-btn" title="Video Call">📹</button>
       </div>
     </div>
     <div id="messages"></div>
     <div id="input-area">
       <input type="text" id="message-input" placeholder="Type a message...">
-      <button id="send-btn"><i class="fas fa-paper-plane"></i></button>
+      <input type="file" id="file-input" accept="image/*,.pdf,.doc,.docx">
+      <button id="send-btn" title="Send">➤</button>
     </div>
-    <button id="call-btn"><i class="fas fa-phone"></i> Call</button>
   </div>
-
-  <div id="video-call-screen" class="hidden">
-    <video id="my-video" autoplay playsinline></video>
-    <button id="my-video-fullscreen" class="fullscreen-btn"><i class="fas fa-expand"></i></button>
-    <video id="partner-video" autoplay playsinline></video>
-    <button id="partner-video-fullscreen" class="fullscreen-btn"><i class="fas fa-expand"></i></button>
-    <div id="call-timer">00:00</div>
-    <button id="end-call"><i class="fas fa-phone-slash"></i> End Call</button>
+  <div id="call-screen" style="display:none;">
+    <video id="local-video" autoplay muted></video>
+    <video id="remote-video" autoplay></video>
+    <div id="call-controls">
+      <span id="call-timer">00:00</span>
+      <button id="end-call-btn">End Call</button>
+    </div>
   </div>
-
-  <script src="/socket.io/socket.io.js"></script>
-  <script src="https://unpkg.com/peerjs@1.4.7/dist/peerjs.min.js"></script>
+  <div id="incoming-call" style="display:none;">
+    <p>Incoming <span id="call-type"></span> Call from <span id="caller"></span></p>
+    <button id="accept-call-btn">Accept</button>
+    <button id="reject-call-btn">Reject</button>
+  </div>
   <script src="/script.js"></script>
 </body>
 </html>
