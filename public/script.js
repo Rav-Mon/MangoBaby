@@ -340,7 +340,7 @@ socket.on('user-status', users => {
 
 socket.on('profile-pic-updated', ({ username: user, image }) => {
   if (user !== username) {
-    document.getElementById('partner-pic').src = image || '/default-pic.png';
+    document.getElementById('partner-pic').src = image || '/ravmon.jpg';
   }
 });
 
