@@ -23,7 +23,12 @@ let partner = '';
 let stream = null;
 let callTimerInterval = null;
 
+// Initialize UI
+videoCallScreen.classList.add('hidden'); // Ensure video call screen is hidden
+chatScreen.classList.add('hidden'); // Ensure chat screen is hidden
+loginScreen.classList.remove('hidden'); // Ensure login screen is visible
 profilePic.src = '/ravmon.jpg'; // Fixed profile picture
+callTimer.textContent = '00:00'; // Reset timer
 
 loginBtn.addEventListener('click', () => {
   const username = usernameInput.value.trim().toLowerCase();
