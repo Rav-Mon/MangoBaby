@@ -2,17 +2,20 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <title>Rav & Mon's Romantic Chat</title>
   <link rel="stylesheet" href="/style.css">
   <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
   <script src="https://unpkg.com/peerjs@1.4.7/dist/peerjs.min.js"></script>
   <script src="/socket.io/socket.io.js"></script>
 </head>
 <body>
   <div id="login-screen">
-    <h1>Rav & Mon's Romance</h1>
+    <h1>Rav & Mon</h1>
     <button onclick="login('Rav')">Login as Rav</button>
     <button onclick="login('Mon')">Login as Mon</button>
   </div>
@@ -27,15 +30,15 @@
         <div id="partner-status" class="status offline"></div>
       </div>
       <div id="call-buttons">
-        <button id="voice-call-btn" title="Voice Call">📞</button>
-        <button id="video-call-btn" title="Video Call">📹</button>
+        <button id="voice-call-btn" title="Voice Call"><i class="fas fa-phone"></i></button>
+        <button id="video-call-btn" title="Video Call"><i class="fas fa-video"></i></button>
       </div>
     </div>
     <div id="messages"></div>
     <div id="input-area">
       <input type="text" id="message-input" placeholder="Type a message...">
       <input type="file" id="file-input" accept="image/*,.pdf,.doc,.docx">
-      <button id="send-btn" title="Send">➤</button>
+      <button id="send-btn" title="Send"><i class="fas fa-paper-plane"></i></button>
     </div>
   </div>
   <div id="call-screen" style="display:none;">
@@ -43,13 +46,13 @@
     <video id="remote-video" autoplay></video>
     <div id="call-controls">
       <span id="call-timer">00:00</span>
-      <button id="end-call-btn">End Call</button>
+      <button id="end-call-btn"><i class="fas fa-times"></i> End Call</button>
     </div>
   </div>
   <div id="incoming-call" style="display:none;">
     <p>Incoming <span id="call-type"></span> Call from <span id="caller"></span></p>
-    <button id="accept-call-btn">Accept</button>
-    <button id="reject-call-btn">Reject</button>
+    <button id="accept-call-btn"><i class="fas fa-check"></i> Accept</button>
+    <button id="reject-call-btn"><i class="fas fa-times"></i> Reject</button>
   </div>
   <script src="/script.js"></script>
 </body>
